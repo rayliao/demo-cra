@@ -1,12 +1,13 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import './App.css';
+import React from "react";
+import { useEffect, useState } from "react";
+import "./App.css";
+import bg from "./bg.jpg";
 
 function App() {
   const [date, setDate] = useState(null);
   useEffect(() => {
     async function getDate() {
-      const res = await fetch('/api/date');
+      const res = await fetch("/api/date");
       const newDate = await res.text();
       setDate(newDate);
     }
@@ -16,7 +17,7 @@ function App() {
     <main>
       <h1>Create React App + Go API</h1>
       <h2>
-        Deployed with{' '}
+        Deployed with{" "}
         <a
           href="https://vercel.com/docs"
           target="_blank"
@@ -26,6 +27,7 @@ function App() {
         </a>
         !
       </h2>
+      <img alt="test" src={bg} />
       <p>
         <a
           href="https://github.com/zeit/now/tree/master/examples/create-react-app"
@@ -33,15 +35,15 @@ function App() {
           rel="noreferrer noopener"
         >
           This project
-        </a>{' '}
-        was bootstrapped with{' '}
+        </a>{" "}
+        was bootstrapped with{" "}
         <a href="https://facebook.github.io/create-react-app/">
           Create React App
-        </a>{' '}
-        and contains three directories, <code>/public</code> for static assets,{' '}
-        <code>/src</code> for components and content, and <code>/api</code>{' '}
-        which contains a serverless <a href="https://golang.org/">Go</a>{' '}
-        function. See{' '}
+        </a>{" "}
+        and contains three directories, <code>/public</code> for static assets,{" "}
+        <code>/src</code> for components and content, and <code>/api</code>{" "}
+        which contains a serverless <a href="https://golang.org/">Go</a>{" "}
+        function. See{" "}
         <a href="/api/date">
           <code>api/date</code> for the Date API with Go
         </a>
@@ -49,7 +51,7 @@ function App() {
       </p>
       <br />
       <h2>The date according to Go is:</h2>
-      <p>{date ? date : 'Loading date...'}</p>
+      <p>{date ? date : "Loading date..."}</p>
     </main>
   );
 }
