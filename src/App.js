@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
-import bg from "./bg.jpg";
 
 function App() {
   const [date, setDate] = useState(null);
@@ -13,6 +12,19 @@ function App() {
     }
     getDate();
   }, []);
+  const ImgWithFallback = ({
+    src,
+    fallback,
+    type = "image/webp",
+    ...delegated
+  }) => {
+    return (
+      <picture>
+        <source srcSet={src} type={type} />
+        <img src={fallback} alt="test" {...delegated} />
+      </picture>
+    );
+  };
   return (
     <main>
       <h1>Create React App + Go API</h1>
@@ -27,7 +39,11 @@ function App() {
         </a>
         !
       </h2>
-      <img alt="test" src={bg} />
+      <ImgWithFallback
+        src={require("./bg.webp")}
+        fallback={require("./bg.jpg")}
+        alt="test"
+      />
       <p>
         <a
           href="https://github.com/zeit/now/tree/master/examples/create-react-app"
