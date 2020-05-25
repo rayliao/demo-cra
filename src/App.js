@@ -39,7 +39,10 @@ function App() {
         </a>
         !
       </h2>
-      <img alt="yoyo" src="./yoyo.jpg" />
+      <picture>
+        <source srcSet="./yoyo.jpg" type="image/jpeg" />
+        <img src="./yoyo.jpg" alt="Brooklyn Bridge - New York"></img>
+      </picture>
       <ImgWithFallback
         src={require("./bg.webp")}
         fallback={require("./bg.jpg")}

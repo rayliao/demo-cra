@@ -70,7 +70,7 @@ export function register(config) {
           // Build the return URL
           const returnUrl =
             req.url.substr(0, req.url.lastIndexOf(".")) + ".webp";
-
+          console.log(returnUrl);
           e.respondWith(
             fetch(returnUrl, {
               mode: "no-cors",
