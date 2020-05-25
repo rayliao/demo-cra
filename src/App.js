@@ -39,6 +39,7 @@ function App() {
         </a>
         !
       </h2>
+      <img alt="yoyo" src="./yoyo.jpg" />
       <ImgWithFallback
         src={require("./bg.webp")}
         fallback={require("./bg.jpg")}
