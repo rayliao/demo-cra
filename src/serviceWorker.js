@@ -24,6 +24,7 @@ export function register(config) {
   if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+    console.log(publicUrl);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
@@ -53,24 +54,19 @@ export function register(config) {
     });
 
     window.addEventListener("fetch", (e) => {
-      // Clone the request
-      const req = e.request.clone();
-
       // Check if the image is a jpeg
       if (/\.jpg$|.png$/.test(e.request.url)) {
-        // Get all of the headers
-        const headers = Array.from(req.headers.entries());
-
-        // Inspect the accept header for WebP support
-        const acceptHeader = headers.filter((item) => item[0] === "accept");
-        const supportsWebp = acceptHeader[1].includes("webp");
-
+        let supportsWebp = false;
+        if (e.request.headers.has("accept")) {
+          supportsWebp = e.request.headers.get("accept").includes("webp");
+        }
         // If we support WebP
         if (supportsWebp) {
+          // Clone the request
+          const req = e.request.clone();
           // Build the return URL
           const returnUrl =
             req.url.substr(0, req.url.lastIndexOf(".")) + ".webp";
-          console.log(returnUrl);
           e.respondWith(
             fetch(returnUrl, {
               mode: "no-cors",
