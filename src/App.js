@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { getData } from "./data";
 
 function App() {
   const [date, setDate] = useState(null);
+  getData();
   useEffect(() => {
     async function getDate() {
       const res = await fetch("/api/date");
