@@ -8,16 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     name: Build To Tencent Cloudbase
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.x'
-      - name: Install and Build
-        run: |
-          npm install
-          npm build
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      # - name: Setup Node
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '10.x'
+      # - name: Install and Build
+      #   run: |
+      #     npm install
+      #     npm build
       - name: Deploy to Tencent CloudBase
         id: deployStatic
         uses: TencentCloudBase/cloudbase-action@v1
@@ -25,4 +25,4 @@ jobs:
           secretId: ${{ secrets.SECRET_ID }}
           secretKey: ${{ secrets.SECRET_KEY }}
           envId: ${{ secrets.ENV_ID }}
-          staticSrcPath: ../build
+          staticSrcPath: build
